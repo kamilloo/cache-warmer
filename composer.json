@@ -11,6 +11,10 @@
     },
     "files": [
       "src/components.php"
+    ],
+     "classmap": [
+      "lib/"
     ]
+
   }
 }
