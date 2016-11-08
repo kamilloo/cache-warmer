@@ -43,7 +43,6 @@ class PageManager
         $query = $this->database->prepare('UPDATE pages SET lastVisitTime = :lastVisitTime WHERE page_id = :page_id');
         $query->bindValue('lastVisitTime',$page->updateLastVisitTime(), \PDO::PARAM_INT);
         $query->bindValue('page_id', $page->getPageId(), \PDO::PARAM_INT);
-print_r($page->updateLastVisitTime());
         return $query->execute();
 
     }

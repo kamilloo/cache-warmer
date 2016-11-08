@@ -2,6 +2,9 @@
 
 namespace Snowdog\DevTest\Model;
 
+use Snowdog\DevTest\Model\PageStat;
+
+
 class User
 {
     public $user_id;
@@ -9,10 +12,15 @@ class User
     public $password_hash;
     public $password_salt;
     public $display_name;
+     /**
+     * @user website stats
+     */
+    private $stats;
 
     public function __construct()
     {
         $this->user_id = intval($this->user_id);
+        $this->stats = new PageStat($this);
     }
 
     /**
@@ -54,6 +62,29 @@ class User
     {
         return $this->display_name;
     }
+    
+    /**
+     * @return int
+    */
+    public function getTotalUserPages()
+    {
+        return $this->stats->getTotalUserPages();
+    }
+    /**
+     * @return DateTime
+    */
+    public function getLeastRecentlyPage() 
+    {
+        return $this->stats->getLeastRecentlyPage();
+    }
+    /**
+     * @return DateTime
+    */
+    public function getMostRecentlyPage()
+    {
+        return $this->stats->getMostRecentlyPage();
+    }
+
     
 
 }
