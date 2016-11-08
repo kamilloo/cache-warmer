@@ -8,6 +8,7 @@ class Page
     public $page_id;
     public $url;
     public $website_id;
+    private $lastVisitTime;
     
     public function __construct()
     {
@@ -39,6 +40,19 @@ class Page
     {
         return $this->website_id;
     }
-    
+
+    public function getLastVisitTime()
+    {
+        return (int)$this->lastVisitTime ? $this->lastVisitTime : 'no cache';
+    }
+
+    public function updateLastVisitTime()
+    {
+        $this->lastVisitTime = (new \DateTime)->format('Y-m-d H:m:s');
+
+        return $this->lastVisitTime;
+    }
+
+
     
 }

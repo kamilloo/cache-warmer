@@ -40,7 +40,7 @@ class WarmCommand
             $warmer->setActor($actor);
 
             foreach ($pages as $page) {
-                $warmer->warm($page->getUrl());
+                $warmer->warm($this->pageManager, $page);
             }
         } else {
             $output->writeln('<error>Website with ID ' . $id . ' does not exists!</error>');

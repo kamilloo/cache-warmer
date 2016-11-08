@@ -1,5 +1,8 @@
 <?php
 
+use Snowdog\DevTest\Model\Page; 
+use Snowdog\DevTest\Model\PageManager;
+
 interface Old_Legacy_CacheWarmer_Resolver_Interface
 {
     public function getIp($hostname);
@@ -60,10 +63,13 @@ class Old_Legacy_CacheWarmer_Warmer
         $this->resolver = $resolver;
     }
 
-    public function warm($url) {
+    public function warm(PageManager $pageManager, Page $page) {
         $ip = $this->resolver->getIp($this->hostname);
         sleep(1); // this emulates visit to http://$hostname/$url via $ip
-        $this->actor->act($this->hostname, $ip, $url);
+
+        $pageManager->updateLastVisitTime($page);
+
+        $this->actor->act($this->hostname, $ip, $page->getUrl());
     }
     
 }

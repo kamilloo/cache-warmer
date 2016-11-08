@@ -36,4 +36,4 @@ Menu::register(LoginMenu::class, 200);
 Menu::register(RegisterMenu::class, 250);
 Menu::register(WebsitesMenu::class, 10);
 
-Migrations::registerComponentMigration('Snowdog\\DevTest', 2);
+Migrations::registerComponentMigration('Snowdog\\DevTest', 3);
