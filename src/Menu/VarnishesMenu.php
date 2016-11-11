@@ -2,27 +2,27 @@
 
 namespace Snowdog\DevTest\Menu;
 
-class RegisterMenu extends AbstractMenu
+class VarnishesMenu extends AbstractMenu
 {
 
     public function isActive()
     {
-        return $_SERVER['REQUEST_URI'] == '/register';
+        return $_SERVER['REQUEST_URI'] == '/varnish';
     }
 
     public function getHref()
     {
-        return '/register';
+        return '/varnish';
     }
 
     public function getLabel()
     {
-        return 'Register';
+        return 'Varnishes';
     }
 
-    public function __invoke()
+     public function __invoke()
     {
-        if (!isset($_SESSION['login'])) {
+        if (isset($_SESSION['login'])) {
             parent::__invoke();
         }
     }

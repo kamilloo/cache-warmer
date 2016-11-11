@@ -57,7 +57,7 @@
                     </tr>
                     <?php foreach ($this->getWebsites() as $website): /** @var \Snowdog\DevTest\Model\Website $website */ ?>
                         <tr>
-                            <td><input type="checkbox" <?= in_array($website->getWebsiteId(), $websiteIds) ? 'checked="checked"' : '' ?>/></td>
+                            <td><input type="checkbox" data-url-associated="/associated" <?= 'data-varnish-id="'.$varnish->getVarnishId().'"' ?> onclick="associated(this)" <?= 'value="'.$website->getWebsiteId().'"' ?> <?= in_array($website->getWebsiteId(), $websiteIds) ? 'checked="checked"' : '' ?>/></td>
                             <td><?= $website->getName() ?></td>
                             <td><?= $website->getHostname() ?></td>
                         </tr>
@@ -70,6 +70,7 @@
 
 </div><!-- /.container -->
 
-
+<script src="js/jquery.min.js" ></script>
+<script src="js/main.js" ></script>
 </body>
 </html>

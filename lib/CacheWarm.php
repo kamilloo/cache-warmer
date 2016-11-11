@@ -7,9 +7,25 @@ interface Old_Legacy_CacheWarmer_Resolver_Interface
 
 class Old_Legacy_CacheWarmer_Resolver_Method implements Old_Legacy_CacheWarmer_Resolver_Interface 
 {
+
     public function getIp($hostname)
-    {
+    {       
         return gethostbyname($hostname);
+    }
+}
+
+class Old_Legacy_CacheWarmer_Resolver_Varnish implements Old_Legacy_CacheWarmer_Resolver_Interface 
+{
+    private $varnishIP;
+
+    public function __construct($varnishIP)
+    {
+        $this->varnishIP = $varnishIP;
+    }
+
+    public function getIp($hostname = null)
+    {       
+        return $this->varnishIP;
     }
 }
 

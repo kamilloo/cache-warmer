@@ -2,26 +2,26 @@
 
 namespace Snowdog\DevTest\Model;
 
-class Website
+class Varnish
 {
 
-    public $website_id;
+    public $varnish_id;
     public $name;
-    public $hostname;
+    public $address;
     public $user_id;
 
     public function __construct()
     {
         $this->user_id = intval($this->user_id);
-        $this->website_id = intval($this->website_id);
+        $this->varnish_id = intval($this->varnish_id);
     }
 
     /**
      * @return int
      */
-    public function getWebsiteId()
+    public function getVarnishId()
     {
-        return $this->website_id;
+        return $this->varnish_id;
     }
 
     /**
@@ -35,9 +35,9 @@ class Website
     /**
      * @return string
      */
-    public function getHostname()
+    public function getIP()
     {
-        return $this->hostname;
+        return $this->address;
     }
 
     /**
